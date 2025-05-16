@@ -1,135 +1,395 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poocholamad - The Beautiful Village</title>
+    <title>Manjery - The Vibrant City</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Internal CSS -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c5e1a;
-            --secondary-color: #f8f1e5;
-            --accent-color: #e67e22;
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --dark-bg: #121212;
+            --darker-bg: #0a0a0a;
+            --card-bg: #1e1e1e;
+            --text-color: #f8f9fa;
+            --text-muted: #adb5bd;
         }
-        
+
         body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--secondary-color);
-            color: #333;
         }
-        
+
         .navbar {
-            background-color: var(--primary-color) !important;
+            background-color: var(--darker-bg) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        .navbar-brand, .nav-link {
-            color: white !important;
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.8rem;
         }
-        
+
+        .nav-link {
+            color: var(--text-color) !important;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+
         .nav-link:hover {
-            color: var(--accent-color) !important;
+            color: var(--primary-color) !important;
         }
-        
+
         .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/random/1200x600/?village,countryside');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080') no-repeat center center;
             background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 120px 0;
+            height: 80vh;
+            display: flex;
+            align-items: center;
             text-align: center;
-            margin-bottom: 40px;
+            color: white;
         }
-        
-        .section-title {
-            color: var(--primary-color);
-            position: relative;
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
             margin-bottom: 30px;
-            padding-bottom: 10px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 25px;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: #5649c0;
+            border-color: #5649c0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            color: var(--primary-color);
+        }
+
         .section-title:after {
             content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 0;
+            display: block;
             width: 80px;
             height: 3px;
-            background-color: var(--accent-color);
+            background: var(--primary-color);
+            margin: 15px auto;
         }
-        
-        .feature-card {
+
+        .card {
+            background-color: var(--card-bg);
             border: none;
             border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
             margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
-        
-        .feature-card:hover {
+
+        .card:hover {
             transform: translateY(-10px);
         }
-        
-        .feature-card img {
+
+        .card-img-top {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
             height: 200px;
             object-fit: cover;
         }
-        
-        .feature-card .card-body {
-            background-color: white;
+
+        .card-title {
+            color: var(--primary-color);
+            font-weight: 600;
         }
-        
-        .testimonial {
-            background-color: white;
-            padding: 20px;
+
+        .highlight-item {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--card-bg);
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .highlight-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
             margin-bottom: 20px;
         }
-        
-        .testimonial img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
+
+        .gallery-item {
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 250px;
             object-fit: cover;
-            margin-bottom: 15px;
         }
-        
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 40px 0 20px;
-            margin-top: 50px;
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
         }
-        
-        .social-icon {
-            color: white;
-            font-size: 24px;
-            margin: 0 10px;
-            transition: color 0.3s;
-        }
-        
-        .social-icon:hover {
-            color: var(--accent-color);
-        }
-        
-        .map-container {
+
+        .business-card {
+            display: flex;
+            background-color: var(--card-bg);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
+
+        .business-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .business-info {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .person-card {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .person-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid var(--primary-color);
+        }
+
+        .facility-item {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-info {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        .footer {
+            background-color: var(--darker-bg);
+            color: var(--text-color);
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-links h5 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 30px;
+            color: var(--text-muted);
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .business-card {
+                flex-direction: column;
+            }
+
+            .business-img {
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        /* btn1 */
+        /* From Uiverse.io by nikk7007 */ 
+.btn {
+ --color: #363938;
+ --color2: rgb(134, 148, 153);
+ padding: 0.8em 1.75em;
+ background-color: transparent;
+ border-radius: 6px;
+ border: .3px solid var(--color);
+ transition: .5s;
+ position: relative;
+ overflow: hidden;
+ cursor: pointer;
+ z-index: 1;
+ font-weight: 300;
+ font-size: 17px;
+ font-family: 'Roboto', 'Segoe UI', sans-serif;
+ text-transform: uppercase;
+ color: var(--color);
+}
+
+.btn::after, .btn::before {
+ content: '';
+ display: block;
+ height: 100%;
+ width: 100%;
+ transform: skew(90deg) translate(-50%, -50%);
+ position: absolute;
+ inset: 50%;
+ left: 25%;
+ z-index: -1;
+ transition: .5s ease-out;
+ background-color: var(--color);
+}
+
+.btn::before {
+ top: -50%;
+ left: -25%;
+ transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn:hover::before {
+ transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn:hover::after {
+ transform: skew(45deg) translate(-50%, -50%);
+}
+
+.btn:hover {
+ color: var(--color2);
+}
+
+.btn:active {
+ filter: brightness(.7);
+ transform: scale(.98);
+}
+        
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <h2>Poocholamad</h2>
-            </a>
+            <a class="navbar-brand" href="#">Manjery</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -142,10 +402,16 @@
                         <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#attractions">Attractions</a>
+                        <a class="nav-link" href="#highlights">Highlights</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#businesses">Businesses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#people">Notable People</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
@@ -156,177 +422,545 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section" id="home">
+    <section class="hero-section" id="home" style="background-image: url(./main.webp);">
         <div class="container">
-            <h1 class="display-3 fw-bold mb-4">Welcome to Poocholamad</h1>
-            <p class="lead mb-5">A serene village nestled in nature's lap</p>
-            <a href="#about" class="btn btn-primary btn-lg px-4 me-2">Explore</a>
-            <a href="#contact" class="btn btn-outline-light btn-lg px-4">Visit Us</a>
+            <div class="hero-content">
+                <h1>Welcome to Manjery</h1>
+                <p>A vibrant city with rich culture, beautiful landscapes, and a thriving community. Discover the charm
+                    of Manjery and experience its unique blend of tradition and modernity.</p>
+                <a href="#about" >
+                    <!-- From Uiverse.io by nikk7007 --> 
+<button class="btn fw-bold "> Explore more
+</button>                       
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="py-5" id="about">
+    <!-- Image Carousel Section -->
+    <section class="py-5 bg-dark">
         <div class="container">
-            <h2 class="text-center section-title">About Our Village</h2>
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://live.staticflickr.com/3627/3621980652_f18a5374c7_b.jpg" alt="Poocholamad Village" class="img-fluid rounded shadow">
+            <div id="cityCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#cityCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#cityCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#cityCarousel" data-bs-slide-to="2"></button>
                 </div>
+                <div class="carousel-inner rounded" style="height: 500px;">
+                    <div class="carousel-item active " style="height: 500px;">
+                        <img src="https://content.jdmagicbox.com/comp/malappuram/w9/9999px483.x483.170607182105.r2w9/catalogue/mini-ooty-view-point-arimbra-malappuram-tourist-attraction-polndqycv9.jpg"
+                            class="d-block w-100" alt="Manjery Landscape" style="height: 100%;">
+                    </div>
+                    <div class="carousel-item" style="height: 500px;">
+                        <img src="https://www.keralatourism.org/images/malabar/static-banner/large/Manjeri_in_Malappuram-18022020054035.jpg"
+                            class="d-block w-100" alt="Manjery Culture" style="height: 100%;">
+                    </div>
+                    <div class="carousel-item" style="height: 500px;">
+                        <img src="https://r1imghtlak.mmtcdn.com/1473c4ac783711eca6ed0a58a9feac02.jpg"
+                            class="d-block w-100" alt="Manjery Community" style="height: 100%; ">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#cityCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#cityCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About the Village Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="section-title">About Manjery</h2>
+            <div class="row">
                 <div class="col-lg-6">
-                    <h3>The Heart of Tradition</h3>
-                    <p>Poocholamad is a picturesque village known for its natural beauty, rich cultural heritage, and warm-hearted people. Nestled between lush green fields and gentle hills, our village offers a peaceful retreat from the hustle and bustle of city life.</p>
-                    <p>With a history spanning centuries, Poocholamad has preserved its traditional way of life while embracing modern developments. Our village is famous for its annual festivals, local handicrafts, and organic farming practices.</p>
-                    <p>The villagers take great pride in maintaining the cleanliness and ecological balance of our surroundings, making Poocholamad a model for sustainable living.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Attractions Section -->
-    <section class="py-5 bg-light" id="attractions">
-        <div class="container">
-            <h2 class="text-center section-title">Village Attractions</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <img src="https://images.indianexpress.com/2017/10/vengara-1.jpg" class="card-img-top" alt="Ancient Temple">
+                    <div class="card">
+                        <img src="https://madhyamamonline.com/h-upload/2022/09/02/1742912-manjerimappilaoutbreak1.jpg"
+                            class="card-img-top" alt="Manjery History">
                         <div class="card-body">
-                            <h5 class="card-title">Ancient Temple</h5>
-                            <p class="card-text">Our 300-year-old village temple is an architectural marvel and spiritual center, hosting vibrant festivals throughout the year.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <img src="https://i.ytimg.com/vi/GGHQkk9w9xk/maxresdefault.jpg" class="card-img-top" alt="Village Lake">
-                        <div class="card-body">
-                            <h5 class="card-title">Serene Lake</h5>
-                            <p class="card-text">The village lake is a perfect spot for birdwatching and enjoying breathtaking sunsets over calm waters.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <img src="https://source.unsplash.com/random/400x300/?farm,organic" class="card-img-top" alt="Organic Farms">
-                        <div class="card-body">
-                            <h5 class="card-title">Organic Farms</h5>
-                            <p class="card-text">Visit our organic farms to learn about traditional farming methods and taste fresh, chemical-free produce.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                            <h5 class="card-title" style="color: aliceblue;">Our History</h5>
+                            <p class="card-text" style="color: aliceblue;">Manjery has a rich history dating back
+                                centuries. Founded in the early 18th century, our city has grown from a small
+                                agricultural community to a thriving urban center while maintaining its cultural
+                                heritage and traditions.</p>
 
-    <!-- Gallery Section -->
-    <section class="py-5" id="gallery">
-        <div class="container">
-            <h2 class="text-center section-title">Village Gallery</h2>
-            <div class="row g-3">
-                <div class="col-md-4 col-6">
-                    <img src="https://source.unsplash.com/random/600x400/?village,people" alt="Village Life" class="img-fluid rounded shadow">
-                </div>
-                <div class="col-md-4 col-6">
-                    <img src="https://source.unsplash.com/random/600x400/?village,festival" alt="Village Festival" class="img-fluid rounded shadow">
-                </div>
-                <div class="col-md-4 col-6">
-                    <img src="https://source.unsplash.com/random/600x400/?village,landscape" alt="Village Landscape" class="img-fluid rounded shadow">
-                </div>
-                <div class="col-md-4 col-6">
-                    <img src="https://source.unsplash.com/random/600x400/?village,market" alt="Village Market" class="img-fluid rounded shadow">
-                </div>
-                <div class="col-md-4 col-6">
-                    <img src="https://source.unsplash.com/random/600x400/?village,children" alt="Village Children" class="img-fluid rounded shadow">
-                </div>
-                <div class="col-md-4 col-6">
-                    <img src="https://source.unsplash.com/random/600x400/?village,handicraft" alt="Village Handicraft" class="img-fluid rounded shadow">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center section-title">What People Say</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="testimonial text-center">
-                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Visitor">
-                        <h5>Priya Sharma</h5>
-                        <p>"Poocholamad's tranquility is unmatched. The villagers welcomed me like family and the morning walks through the fields were magical."</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial text-center">
-                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Visitor">
-                        <h5>Rahul Mehta</h5>
-                        <p>"As a photographer, I found endless inspiration in Poocholamad's landscapes and the vibrant culture of its people."</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial text-center">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Visitor">
-                        <h5>Ananya Patel</h5>
-                        <p>"The organic food, fresh air, and warm hospitality made my stay in Poocholamad a rejuvenating experience I'll never forget."</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="py-5" id="contact">
-        <div class="container">
-            <h2 class="text-center section-title">Visit Us</h2>
-            <div class="row">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <div class="map-container">
-                        <!-- Replace with your actual village map embed -->
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.715020487231!2d76.3410723147946!3d10.039966992822763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c26c6a7a3a5%3A0x5a7a3a5a7a3a5a7!2sKerala!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <h3>Plan Your Visit</h3>
-                    <p>Poocholamad welcomes visitors throughout the year. The best time to visit is between October and March when the weather is pleasant and several festivals take place.</p>
-                    
-                    <h4 class="mt-4">Contact Information</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><strong>Village Office:</strong> +91 XXXXX XXXXX</li>
-                        <li class="mb-2"><strong>Tourism Coordinator:</strong> tourism@poocholamad.com</li>
-                        <li class="mb-2"><strong>Address:</strong> Poocholamad Village, District, State, India - PIN XXXXXX</li>
-                    </ul>
-                    
-                    <h4 class="mt-4">Stay Connected</h4>
-                    <div class="d-flex">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <div class="card">
+                        <img src="https://live.staticflickr.com/3672/12659025973_c397990e57_b.jpg" class="card-img-top"
+                            alt="Manjery Culture">
+                        <div class="card-body">
+                            <h5 class="card-title">Culture & Traditions</h5>
+                            <p class="card-text" style="color: aliceblue;">Manjery is known for its vibrant festivals,
+                                traditional crafts, and warm hospitality. Our annual Harvest Festival attracts visitors
+                                from across the region, showcasing local music, dance, and culinary delights.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Modern Manjery</h5>
+                            <p class="card-text" style="color: aliceblue;">Today, Manjery is a perfect blend of
+                                tradition and progress. With excellent educational institutions, healthcare facilities,
+                                and a growing tech industry, our city offers the best of both worlds - the charm of a
+                                close-knit community with the amenities of modern urban living.</p>
+                            <p class="card-text" style="color: aliceblue;">Our local government is committed to
+                                sustainable development, ensuring that as we grow, we preserve our natural beauty and
+                                cultural identity for future generations.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Village Highlights Section -->
+    <section id="highlights" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="section-title">Village Highlights</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3>Historical Landmarks</h3>
+                        <p>Explore our ancient temples, colonial-era architecture, and the famous Manjery Clock Tower
+                            that has stood for over 200 years.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Culinary Delights</h3>
+                        <p>Taste our famous Manjery farsa and other local specialties that have been passed down through
+                            generations.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <h3>Natural Beauty</h3>
+                        <p>Discover the breathtaking Manjery hills and our protected forest reserves with diverse flora
+                            and fauna.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Community Spirit</h3>
+                        <p>Experience our famous hospitality and community events that bring everyone together
+                            throughout the year.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Education Hub</h3>
+                        <p>Home to prestigious schools and vocational training centers known for academic excellence.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3>Economic Growth</h3>
+                        <p>A thriving local economy with opportunities in agriculture, handicrafts, and technology.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo & Video Gallery Section -->
+    <section id="gallery" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Photo & Video Gallery</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://c0.wallpaperflare.com/preview/250/722/546/egret-bird-great-egret-avian.jpg"
+                            alt="Manjery View">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1724838818124-8c103d0e45ea?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bW9kaWZpZWQlMjBjYXJ8ZW58MHx8MHx8fDA%3D"
+                            alt="Manjery View">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://gamca.co.in/wp-content/uploads/2024/05/skyscrapers-city-against-sky_1048944-28230673.jpg"
+                            alt="Manjery View">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://files.yappe.in/place/full/sreedevi-cine-palace-4k-3d-dolby-atmos-9200120.webp"
+                            alt="Manjery View">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/416cca93958549.5e72458715896.jpg"
+                            alt="Manjery View">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://content3.jdmagicbox.com/comp/malappuram/e2/9999px483.x483.220613213813.m4e2/catalogue/indian-mall-manjeri-malappuram-malls-w6h7yanmgp.jpg"
+                            alt="Manjery View">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h3 class="mb-4">Experience Manjery Through Video</h3>
+                    <div class="" style="height: 500px;">
+                        <video autoplay muted playsinline style="height: 100%; width: 100%;">
+                            <source src="./379646213551857669 (2).mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Businesses and Services Section -->
+    <section id="businesses" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="section-title">Local Businesses & Services</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="business-card">
+                        <img src="https://content.jdmagicbox.com/comp/def_content/spice-retailers/shutterstock-553125715-spice-retailers-3-9cpko.jpg"
+                            class="business-img" alt="Business">
+                        <div class="business-info">
+                            <h4>Manjery Spice Market</h4>
+                            <p class="text-light">Family-owned since 1923, offering the finest local spices and herbs.
+                            </p>
+                            <p><i class="fas fa-map-marker-alt text-primary"></i> 123 Main Street</p>
+                            <p><i class="fas fa-phone text-primary"></i> (123) 456-7890</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="business-card">
+                        <img src="https://www.farsagroup.com/static/farsa%20majeri%203-c01deca5c97f0348aff77fae3907e37d.webp"
+                            class="business-img" alt="Business">
+                        <div class="business-info">
+                            <h4>farsa Restaurant</h4>
+                            <p class="text-light">Traditional cuisine with a modern twist, featuring local ingredients.
+                            </p>
+                            <p><i class="fas fa-map-marker-alt text-primary"></i> 45 Riverside Road</p>
+                            <p><i class="fas fa-phone text-primary"></i> (123) 456-7891</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="business-card">
+                        <img src="https://content.jdmagicbox.com/comp/def_content/plant_nurseries/default-plant-nurseries-3.jpg"
+                            class="business-img" alt="Business">
+                        <div class="business-info">
+                            <h4>Green Nursery</h4>
+                            <p class="text-light" style="color: w">Plants, gardening supplies, and landscaping services.
+                            </p>
+                            <p><i class="fas fa-map-marker-alt text-primary"></i> 78 Garden Lane</p>
+                            <p><i class="fas fa-phone text-primary"></i> (123) 456-7892</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="business-card">
+                        <img src="https://content.jdmagicbox.com/comp/malappuram/l8/9999px483.x483.171003120329.g9l8/catalogue/zain-technologies-manjeri-kla-malappuram-cctv-dealers-y7lr39wekr.jpg?fit=around%7C350:350&crop=350:350;*,*"
+                            class="business-img" alt="Business">
+                        <div class="business-info">
+                            <h4>Manjery Tech Solutions</h4>
+                            <p class="text-light">Local IT services, computer repairs, and digital marketing.</p>
+                            <p><i class="fas fa-map-marker-alt text-primary"></i> 22 Innovation Drive</p>
+                            <p><i class="fas fa-phone text-primary"></i> (123) 456-7893</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <a href="#" class="btn btn-outline-primary">View All Businesses</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="facilities" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="section-title">Local Facilities</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="facility-item">
+                        <h4><i class="fas fa-hospital text-primary me-2"></i> Healthcare</h4>
+                        <ul>
+                            <li>Manjery General Hospital - 24/7 emergency services</li>
+                            <li>3 community health centers</li>
+                            <li>Specialty dental and eye clinics</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="facility-item">
+                        <h4><i class="fas fa-school text-primary me-2"></i> Education</h4>
+                        <ul>
+                            <li>Manjery Public School (K-12)</li>
+                            <li>2 primary schools</li>
+                            <li>Technical training institute</li>
+                            <li>Public library with digital resources</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="facility-item">
+                        <h4><i class="fas fa-futbol text-primary me-2"></i> Recreation</h4>
+                        <ul>
+                            <li>Community sports complex</li>
+                            <li>Public swimming pool</li>
+                            <li>3 parks with walking trails</li>
+                            <li>Youth activity center</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="facility-item">
+                        <h4><i class="fas fa-bus text-primary me-2"></i> Transportation</h4>
+                        <ul>
+                            <li>Local bus service connecting all neighborhoods</li>
+                            <li>Regional train station with daily service</li>
+                            <li>Bike sharing program</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="facility-item">
+                        <h4><i class="fas fa-shopping-cart text-primary me-2"></i> Shopping</h4>
+                        <ul>
+                            <li>Main Street shopping district</li>
+                            <li>Weekly farmers market</li>
+                            <li>Supermarket with local products</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="facility-item">
+                        <h4><i class="fas fa-umbrella-beach text-primary me-2"></i> Public Services</h4>
+                        <ul>
+                            <li>Modern waste management system</li>
+                            <li>24/7 police and fire services</li>
+                            <li>Community development office</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact and Visitor Info Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Contact & Visitor Information</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <h3 class="mb-4">Get In Touch</h3>
+                        <div class="mb-4">
+                            <p><i class="fas fa-map-marker-alt contact-icon"></i> <strong>Address:</strong> Manjery City
+                                Hall, 1 Municipal Plaza, Manjery</p>
+                        </div>
+                        <div class="mb-4">
+                            <p><i class="fas fa-phone contact-icon"></i> <strong>Phone:</strong> (123) 456-7800</p>
+                        </div>
+                        <div class="mb-4">
+                            <p><i class="fas fa-envelope contact-icon"></i> <strong>Email:</strong> info@manjery.gov</p>
+                        </div>
+                        <div class="mb-4">
+                            <p><i class="fas fa-clock contact-icon"></i> <strong>Office Hours:</strong> Monday-Friday,
+                                8:30 AM - 5:00 PM</p>
+                        </div>
+                        <div class="social-icons mt-4">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <iframe class="mt-3"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31319.544813540768!2d76.09145444413738!3d11.11761564935187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba6367a09827289%3A0xa5bab8b1f3018ca4!2sManjeri%2C%20Kerala!5e0!3m2!1sen!2sin!4v1747372886340!5m2!1sen!2sin"
+                        width="635" height="350" style="border:0; border-radius: 10px;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <h3 class="mb-4">Visitor Information</h3>
+                        <div class="mb-4">
+                            <h5><i class="fas fa-hotel contact-icon"></i> Accommodations</h5>
+                            <p>Manjery offers a range of lodging options from boutique hotels to cozy bed & breakfasts.
+                                Contact our tourism office for recommendations based on your needs.</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5><i class="fas fa-map-signs contact-icon"></i> Getting Here</h5>
+                            <p>By car: Accessible via Highway 7 and State Route 22</p>
+                            <p>By train: Daily service from regional hub cities</p>
+                            <p>Nearest airport: Regional International Airport (45 minutes away)</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5><i class="fas fa-calendar-alt contact-icon"></i> Best Time to Visit</h5>
+                            <p>Spring (March-May) for pleasant weather and blooming flowers</p>
+                            <p>Fall (September-November) for harvest festivals and autumn colors</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title text-center mb-4">Send Us a Message</h3>
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <input type="text" class="form-control" placeholder="Your Name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <input type="email" class="form-control" placeholder="Your Email" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Subject">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="5" placeholder="Your Message"
+                                        required></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Send Message</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <div class="mb-4">
-                <a href="#" class="text-white mx-2">Home</a>
-                <a href="#about" class="text-white mx-2">About</a>
-                <a href="#attractions" class="text-white mx-2">Attractions</a>
-                <a href="#gallery" class="text-white mx-2">Gallery</a>
-                <a href="#contact" class="text-white mx-2">Contact</a>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>About Manjery</h5>
+                    <p>Manjery is a vibrant city with rich cultural heritage, beautiful landscapes, and a thriving
+                        community. We welcome visitors from around the world to experience our unique charm.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#home" style="text-decoration: none;">Home</a></li>
+                        <li><a href="#about" style="text-decoration: none;">About</a></li>
+                        <li><a href="#highlights" style="text-decoration: none;">Highlights</a></li>
+                        <li><a href="#gallery" style="text-decoration: none;">Gallery</a></li>
+                        <li><a href="#businesses" style="text-decoration: none;">Businesses</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="#" style="text-decoration: none;">Tourism Info</a></li>
+                        <li><a href="#" style="text-decoration: none;">City Services</a></li>
+                        <li><a href="#" style="text-decoration: none;">Business Directory</a></li>
+                        <li><a href="#" style="text-decoration: none;">Events Calendar</a></li>
+                        <li><a href="#" style="text-decoration: none;">Emergency Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to our newsletter for updates on events and news in Manjery.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <p class="mb-0">&copy; 2023 Poocholamad Village. All Rights Reserved.</p>
-            <p class="mt-2">Designed with ❤️ for our beautiful village</p>
+            <div class="copyright text-center">
+                <p>&copy; 2023 Manjery City. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS and Font Awesome -->
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        // Back to top button
+        window.addEventListener('scroll', function () {
+            var backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
